@@ -1,0 +1,22 @@
+name: Testes Automatizados da Catraca
+
+on: [push]
+
+jobs:
+  build-e-test:
+    runs-on: ubuntu-latest # O GitHub vai ligar um computador com Linux para rodar os testes
+
+    steps:
+      - name: Baixando o código do repositório
+        uses: actions/checkout@v3
+
+      - name: Instalando o Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Instalando as ferramentas (Express, Jest, Supertest)
+        run: npm install
+
+      - name: Executando os Testes de QA
+        run: npx jest
